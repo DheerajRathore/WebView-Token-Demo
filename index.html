@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Access Token Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    .token {
+      font-weight: bold;
+      color: #2c3e50;
+      background: #ecf0f1;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Access Token</h1>
+  <p id="tokenDisplay" class="token">Loading token...</p>
+
+  <script>
+    function getToken() {
+      return window.localStorage.getItem("accessToken");
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const token = getToken();
+      const displayElement = document.getElementById("tokenDisplay");
+
+      if (token) {
+        displayElement.textContent = token;
+      } else {
+        displayElement.textContent = "No token found in localStorage.";
+      }
+    });
+  </script>
+</body>
+</html>
